@@ -20,26 +20,23 @@
         <!-- right image cover-->
         <div style="background: linear-gradient(to left, #c0ec9100, #c0ec91);
                     position: absolute;
-                    top: 78px;
-                    left: 0px;
-                    width: 100px;
-                    height:823px;
-                    z-index: 2;"></div>
+                    top: 5em;
+                    left: 0em;
+                    width: 6em;
+                    height:52em;"></div>
         <!--left image cover-->
         <div style="background: linear-gradient(to right, #c0ec9100, #c0ec91);
                     position: absolute;
-                    top: 78px;
-                    right: 0px;
-                    width: 100px;
-                    height:823px;
-                    z-index: 2;"></div>
+                    top: 5em;
+                    left: 114em;
+                    width: 6em;
+                    height:52em;"></div>
         <!-- image switch buttons-->
         <div class="ImageButtonPanel"
-             style="position: absolute;
-                    width: 200px;
-                    left: 670px;
-                    top: 830px;
-                    z-index: 2;">
+             style="position: relative;
+                    width: 10em;
+                    left: 35%;
+                    top: 47em;">
           <button class="ImageButton" onclick="ChangeImageIndex(1)" id="image_button_1">1</button>
           <button class="ImageButton" onclick="ChangeImageIndex(2)" id="image_button_2">2</button>
           <button class="ImageButton" onclick="ChangeImageIndex(3)" id="image_button_3">3</button>
@@ -65,8 +62,8 @@
             <button class="PanelSmallButton"
                     onclick="SwitchPanel(2)" 
                     style="position:relative;
-                           top: 2px;
-                           left: 65px;">Forget Password</button>
+                           top: 0.1em;
+                           left: 4em;">Forget Password</button>
           </div>
         </div>
           
@@ -108,9 +105,41 @@
       </div>
       <!-- forget password panel -->
       <div class="Panel" id="forget_password_panel" style="display: none;">
+        <h2 class="PanelTitle">Forget Password</h2>
+        <div class="InputContainer">
+          <div class="InputComponent">
+            <label for="email" class="InputLable">email</label>
+            <input type="text" id="password" name="password" class="InputField">
+            <!-- additional input field component, error massage and buttons-->
+            <label class="InputInfo"></label>
+          </div>
+        </div>
+        <button class="PanelLargeButton">Send Email</button>
       </div>
       <!-- reset password panel -->
       <div class="Panel" id="reset_password_panel" style="display: none;">
+        <h2 class="PanelTitle">Forget Password</h2>
+        <div class="InputContainer">
+          <div class="InputComponent">
+            <label for="email" class="InputLable">reset code</label>
+            <input type="text" id="email" name="password" class="InputField">
+            <!-- additional input field component, error massage and buttons-->
+            <label class="InputInfo"></label>
+          </div>
+          <div class="InputComponent">
+            <label for="email" class="InputLable">password</label>
+            <input type="text" id="password" name="password" class="InputField">
+            <!-- additional input field component, error massage and buttons-->
+            <label class="InputInfo"></label>
+          </div>
+          <div class="InputComponent">
+            <label for="email" class="InputLable">reset password</label>
+            <input type="text" id="password" name="password" class="InputField">
+            <!-- additional input field component, error massage and buttons-->
+            <label class="InputInfo"></label>
+          </div>
+        </div>
+        <button class="PanelLargeButton">Reset Password</button>
       </div>
     </div>
     <!-- Foot -->
