@@ -72,6 +72,7 @@ def predict():
 
 @API.route('/api/login', methods=['POST'])
 def login():
+    #example input for request body {"username": "test", "password": "test"}
     data = request.get_json()
     if data.get("username") not in in_memory_user_dictionary:
         return jsonify(userAuthenticated="false", error_mes="username not found || create account..."), 200
@@ -83,6 +84,7 @@ def login():
 
 @API.route('/api/create_account', methods=['POST'])
 def createAccount():
+    #example input for request body {"username": "test", "password": "test", "email": "test"}
     data = request.get_json()
     if data.get("username") in in_memory_user_dictionary:
         return jsonify(userAuthenticated="false", error_mes="user already exist...login."), 200
