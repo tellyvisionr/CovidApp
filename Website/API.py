@@ -35,6 +35,11 @@ def reformat_input(content):
     return reformatted_content
 
 
+#temporary data struct for handling authentication => will be replaced with database for prototype 2
+in_memory_user_dictionary = {}
+
+
+
 @API.route("/api/predict", methods=["POST"])
 def predict():
     try:
@@ -65,22 +70,28 @@ def predict():
         return jsonify({"error": str(e)})
 
 
-
-@API.route('/api/test', methods=['GET'])
-def test():
-    return jsonify(message="Hello from API"), 200
-# For demonstration purposes, using hardcoded username and password
-VALID_USERNAME = 'admin'
-VALID_PASSWORD = 'password'
-
 @API.route('/api/login', methods=['POST'])
 def login():
     data = request.get_json()
-    if data.get("username") == VALID_USERNAME and data.get("password") == VALID_PASSWORD:
+    if data.get("username") not in in_memory_user_dictionary:
+        return jsonify(userAuthenticated="false", error_mes="username not found || create account..."), 200
+    elif in_memory_user_dictionary[data.get("username")]['password'] != data.get("password"):
+        return jsonify(userAuthenticated="false", error_mes="password incorrect"), 200
+    else: 
+        print(in_memory_user_dictionary)
         return jsonify(userAuthenticated="true"), 200
         
 
-
+@API.route('/api/create_account', methods=['POST'])
+def createAccount():
+    data = request.get_json()
+    if data.get("username") in in_memory_user_dictionary:
+        return jsonify(userAuthenticated="false", error_mes="user already exist...login."), 200
+    else:
+        in_memory_user_dictionary[data.get("username")] = {'password': data.get("password"), 'email': data.get("email")}
+        print(in_memory_user_dictionary)
+        return jsonify(status="created account"), 200
+    
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    API.run(debug=True)
