@@ -78,7 +78,6 @@ def login():
     elif in_memory_user_dictionary[data.get("username")]['password'] != data.get("password"):
         return jsonify(userAuthenticated="false", error_mes="password incorrect"), 200
     else: 
-        print(in_memory_user_dictionary)
         return jsonify(userAuthenticated="true"), 200
         
 
@@ -89,7 +88,6 @@ def createAccount():
         return jsonify(userAuthenticated="false", error_mes="user already exist...login."), 200
     else:
         in_memory_user_dictionary[data.get("username")] = {'password': data.get("password"), 'email': data.get("email")}
-        print(in_memory_user_dictionary)
         return jsonify(status="created account"), 200
     
 
